@@ -1,0 +1,140 @@
+html {
+	font-family: Montserrat, sans-serif;
+	line-height: 1.5;
+	color: #4a4a4a;
+	font-weight: 300;
+}
+body {
+	margin: 0;
+}
+header{
+	text-align: center;
+	overflow: hidden;
+}
+p {
+	margin: 0; }
+.container {			
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 0.75rem;
+}
+.heading-font {
+	font-family: "Six Caps", sans-serif;
+	font-weight: 400;
+	letter-spacing: 2px; }
+a {
+	text-decoration: none;
+	color: #ef5f52;
+	transition: 0.5s; }
+h1 {			
+	font-size: 4rem;
+	margin: 0;			
+}
+h2 {			
+	margin: 0 0 1.5rem;
+}
+h1 + h2 {
+	font-weight: 300;
+}
+code {
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+section h2, section h3, a {
+	color: #ef5f52;
+}
+section a {
+	border-bottom: 1px solid;
+}
+section a:hover {
+	color: #000;
+}
+
+.mb {
+	margin-bottom: 1.5rem!important;
+}
+
+h2.heading-font {
+	font-size: 3rem;
+}
+h3.heading-font {
+	font-size: 2rem;
+}
+.beer-slider {
+	margin-bottom: 1.5rem;
+}
+.beer-slider[data-beer-label]:after,
+.beer-reveal[data-beer-label]:after {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 0.75rem;
+}
+
+  .fork-me {
+  	position: absolute;
+  	top: 0;
+  	right:0;
+  	overflow: hidden;
+  	width: 180px;
+  	height: 180px;
+  }
+
+  .fork-me-link {
+  	display: inline-block;
+  	position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ef5f52;
+    transform-origin: left top;
+    transform: translate3d(74px, 0%, 0) rotate(45deg) translate3d(0, -100%, 0);
+    transition: 0.5s;
+    text-align: center;
+    color: #fff;
+    padding: 10px 50px;
+    overflow: hidden;
+  	white-space: nowrap;
+  }
+
+.fork-me-link:hover, .fork-me-link:focus {
+	background-color: #000;
+	outline: none;
+}
+.beer-slider {
+	margin-left: auto;
+	margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+	.examples {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.examples .beer-slider {
+		max-width: calc(50% - 12px);
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.examples h2 {
+	width: 100%;
+}
+.how {
+	background: #f5eeee;
+	padding: 1.5rem 0;
+}
+.container pre {
+	background: #f5eeee;
+}
+footer {
+	border-top: 4px solid #ef5f52;
+	padding: 1.5rem 0;
+	
+}
+footer .container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+header img {
+	margin-top: 1.5rem;
+}

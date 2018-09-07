@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% if(htmlWebpackPlugin.files.css) { %>
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
+  <% } %>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Six+Caps" rel="stylesheet">
+  <link rel="stylesheet" href="../demo-assets/prism/prism.css">
+  <link rel="stylesheet" href="../demo-assets/demo.css">  
+</head>
+<body>
+  <div class="fork-me"><a class="fork-me-link" href="https://github.com/pehaa/beerslider">Fork Me On GitHub</a></div>    
+  <div class="container">
+    <header>
+      <img src="../demo-assets/images/logos/beer_logo.svg" width="200" alt="">
+      <h1 class="heading-font">Beer Slider</h1>
+      <h2>Responsive &amp; Accessible Before-After Slider</h2>
+    </header>
+    <div id="slider" class="beer-slider" data-beer-label="before">
+      <img src="../demo-assets/images/man-hold-beer.jpg" alt="">
+      <div class="beer-reveal" data-beer-label="after">
+        <img src="../demo-assets/images/man-hold-beer-after1logo.jpg" alt="">
+      </div>
+    </div>    
+    <section>
+      <h2 class="heading-font">What's Beer Plugin?</h2>
+      <p class="mb">Beer Slider is a lightweight vanilla JavaScript plugin.</p>     
+      <p>It's basic purpose is to compare two versions of an image, for example the same object shot in two different moments, a pre-edited photo and its processed version, a sketch and the finished illustration, etc.</p>
+      <p class="mb"> It can be particularly useful with photo presets (Lightroom presets, Photoshop actions, etc.).</p>
+      <p class="mb">Beer Slider is keyboard accessible - you can access it and reveal/hide the "after" state image with the keyboard.</p>
+    </section>
+  </div>
+  <section class="how mb">
+      <div class="container">
+    <section class="examples">
+      <h2 class="heading-font">Examples:</h2>
+      <div id="slider1" class="beer-slider" data-beer-label="original">
+        <img src="../demo-assets/images/baby-raccoon-grass.jpg" srcset="../demo-assets/images/baby-raccoon-grass.jpg 1x, ../demo-assets/images/baby-raccoon-grass@2x.jpg 2x" alt="">
+        <div class="beer-reveal" data-beer-label="Black&White">
+          <img src="../demo-assets/images/baby-raccoon-grass-after.jpg" srcset="../demo-assets/images/baby-raccoon-grass-after.jpg 1x, ../demo-assets/images/baby-raccoon-grass-after@2x.jpg 2x" alt="">
+        </div>
+      </div>
+      <div id="slider2" class="beer-slider" data-beer-label="sepicol">
+        <img src="../demo-assets/images/windowsill-objects-warmsphere.jpg" srcset="../demo-assets/images/windowsill-objects-warmsphere.jpg 1x, ../demo-assets/images/windowsill-objects-warmsphere@2x.jpg 2x" alt="">
+        <div class="beer-reveal" data-beer-label="warmsphere">
+          <img src="../demo-assets/images/windowsill-objects-sepicol.jpg" srcset="../demo-assets/images/windowsill-objects-sepicol.jpg 1x, ../demo-assets/images/windowsill-objects-sepicol@2x.jpg 2x" alt="">
+        </div>
+      </div>
+    </section> 
+    <div id="slider3" class="beer-slider">
+      <img src="../demo-assets/images/peitlerkofel-mountains-original.jpg"  alt="">
+      <div class="beer-reveal" data-beer-label="after">
+        <img src="../demo-assets/images/peitlerkofel-mountains.jpg"  alt="">
+      </div>
+    </div>
+  </section>
+  <section class="mb">
+    <div class="container">
+      <h2 class="heading-font">How To Use?</h2>
+      <p class="mb">Include the stylesheet in your <code>head:</code></p>
+      <pre class="mb"><code class="language-markup">
+&lt;link rel="stylesheet" href="BeerSlider.css">
+      </code></pre>
+      <p class="mb">Structure your markup as in the example below. Make sure to keep the class names as in the example. The <code>data-beer-label</code> attributes define the text of the labels displayed in the upper corners of the slider. Remove them or leave empty if you do not need the label(s).</p>
+      <pre class="mb"><code class="language-markup">
+&lt;div id="beer-slider" class="beer-slider" data-beer-label="before">
+  &lt;img src="man-hold-beer.jpg" alt="Original - Man holding beer">
+  &lt;div class="beer-reveal" data-beer-label="after">
+    &lt;img src="man-hold-beer-after.jpg" alt="Processed - Man holding beer">
+  &lt;/div>
+&lt;/div>
+      </code></pre>
+      <p class="mb">Include the script before the closing <code>body</code> tag:</p>      
+      <pre class="mb"><code class="language-markup">
+&lt;script src="BeerSlider.js">&lt;/script>
+&lt;script>
+  var slider = new BeerSlider( document.getElementById( "beer-slider" ) );
+&lt;/script>
+      </code></pre>
+      <p class="mb">
+        You can also set the starting position somewhere else than in the middle using the parameter <code>start</code> taking values from 0 to 100.
+      </p>
+      <pre class="mb"><code class="language-markup">
+&lt;script>
+  new BeerSlider( document.getElementById( "beer-slider" ), { start: 25 } );
+&lt;/script>
+      </code></pre>
+      <h3 class="heading-font">Use with jQuery or Zepto</h3>
+      <p class="mb">If you use jQuery or Zepto in your project and have a few before-after sliders on your page, you can do something like that:</p>
+<pre class="mb"><code class="language-markup">
+&lt;script>
+  $.fn.BeerSlider = function ( options ) {
+    options = options || {};
+    return this.each(function() {
+      new BeerSlider(this, options);
+    });
+  };
+  $('.beer-slider').BeerSlider({start: 25});
+&lt;/script>
+      </code></pre>
+<div class="mb">or:</div>
+<pre class="mb"><code class="language-markup">
+&lt;script>
+  $.fn.BeerSlider = function ( options ) {
+    options = options || {};
+    return this.each(function() {
+      new BeerSlider(this, options);
+    });
+  };
+  $('.beer-slider').each( (function( index, el ) {
+    $(el).BeerSlider({start: $(el).data('beer-start')})
+  });
+&lt;/script>
+      </code></pre>
+<div class="mb">with:</div>
+<pre class="mb"><code class="language-markup">
+&lt;div id="beer-slider" class="beer-slider" data-beer-label="before" data-beer-start="25">
+  &lt;img src="man-hold-beer.jpg" alt="Original - Man holding beer">
+  &lt;div class="beer-reveal" data-beer-label="after">
+    &lt;img src="man-hold-beer-after.jpg" alt="Processed - Man holding beer">
+  &lt;/div>
+&lt;/div>
+&lt;div id="beer-slider2" class="beer-slider" data-beer-label="before" data-beer-start="75">
+  &lt;img src="man-hold-beer.jpg" alt="Original - Man holding beer">
+  &lt;div class="beer-reveal" data-beer-label="after">
+    &lt;img src="man-hold-beer-after.jpg" alt="Processed - Man holding beer">
+  &lt;/div>
+&lt;/div>
+      </code></pre>  
+    </div>
+  </section>
+
+    <section class="how">
+      <div class="container">
+      <h2 class="heading-font">Credits:</h2>
+      <p>In this demo we use the beautiful presets from the free pack of Lightroom presets available on <a href="https://altphotos.com/presets/">Altphotos</a> as well as the CC0 images found on <a href="https://altphotos.com">Altphotos.</a> 
+      <p class="mb">The original beer photo by <a href="https://tookapic.com/pawelkadysz">Paweł Kadysz</a> can be found on <a href="https://altphotos.com/photo/man-holding-glass-of-beer-143/">Altphotos.</a>
+      <p>Beer Slider logo was created by <a href="https://dribbble.com/joevains">Joe Vains.</a></p>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+      <a href="https://github.com/pehaa/beer-slider">
+        <img src="../demo-assets/images/logos/Before_After.svg" width="120" alt="">
+      </a>
+      <p>Built with Love by <a href="https://pepsized.com/author/pehaa">PeHaa</a></p>
+      </div>    
+    </footer>
+  </div>
+  <!-- library -->
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+  <!-- init -->
+  <script>
+    new BeerSlider( document.getElementById( "slider" ) );    
+    new BeerSlider( document.getElementById( "slider1" ), {start: 75} );
+    new BeerSlider( document.getElementById( "slider2" ), {start: 25} );
+    new BeerSlider( document.getElementById( "slider3" ), {start: 100} );
+  </script>
+  <script src="../demo-assets/prism/prism.js"></script>
+</body>
+</html>
