@@ -24,7 +24,8 @@
   transition: opacity 0.35s; }
   .beer-reveal > :first-child {
     width: 200%;
-    max-width: none;
+    max-width: none; }
+  .beer-reveal > img:first-child {
     height: auto; }
 
 .beer-range {

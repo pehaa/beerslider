@@ -71,7 +71,9 @@
     "webpack-karma-jasmine": "^3.0.0",
     "webpack-merge": "^4.1.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.0.0-beta.3"
+  },
   "config": {
     "ghooks": {
       "pre-commit": "npm run validate"

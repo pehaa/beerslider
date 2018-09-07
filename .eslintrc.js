@@ -5,9 +5,6 @@ module.exports = {
         "es6": true,
         "jasmine": true
     },
-    "globals": {
-        "no-console": false
-    },
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2015,
@@ -31,5 +28,13 @@ module.exports = {
             "never"
         ],
         "no-console": ["error", { allow: ["warn", "error"] }]
-    }
+    },
+    "overrides": [
+        {
+            "files": ["src/index.js"],
+            "rules": {
+                "no-unused-vars": "off"
+            }
+        }
+  ]
 };

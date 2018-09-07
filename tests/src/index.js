@@ -17,6 +17,18 @@ const innerHTML = `<div id="slider1" class="beer-slider beer-slider-wlabels" dat
         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
         <div class="beer-reveal" data-beer-label="after">
         </div>
+    </div>
+    <div id="slider4" class="beer-slider beer-slider-wlabels" data-beer-label="before">
+            <div data-beer-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" ></div>
+        <div class="beer-reveal" data-beer-label="after">
+            <div data-beer-src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></div>
+        </div>
+    </div>
+    <div id="slider5" class="beer-slider beer-slider-wlabels" data-beer-label="before">
+            <div></div>
+        <div class="beer-reveal" data-beer-label="after">
+            <div></div>
+        </div>
     </div>`
 describe( 'The Beerslider', () => {
     it('can be instatiated via constructor', () => {
@@ -127,8 +139,26 @@ describe( 'The Beerslider constructor on an existing element', () => {
     })
     it('should call the init method when images loaded', (done) => {
         spyOn(BeerSlider.prototype,'init')
-        spyOn(BeerSlider.prototype,'loadedBoth').and.returnValue(Promise.resolve())
+        //spyOn(BeerSlider.prototype,'loadedBoth').and.returnValue(Promise.resolve())
         const el = document.getElementById('slider1')
+        const beerslider = new BeerSlider(el)
+        beerslider.loadedBoth().then(() => {
+            expect(beerslider.init).toHaveBeenCalled()
+            done()
+        })    
+    })
+    it('should call the init method when data-beer-src is found (slider does not use images)', (done) => {
+        spyOn(BeerSlider.prototype,'init')
+        const el = document.getElementById('slider4')
+        const beerslider = new BeerSlider(el)
+        beerslider.loadedBoth().then(() => {
+            expect(beerslider.init).toHaveBeenCalled()
+            done()
+        })    
+    })
+    it('should call the init method when no src is found (slider does not use images)', (done) => {
+        spyOn(BeerSlider.prototype,'init')
+        const el = document.getElementById('slider5')
         const beerslider = new BeerSlider(el)
         beerslider.loadedBoth().then(() => {
             expect(beerslider.init).toHaveBeenCalled()

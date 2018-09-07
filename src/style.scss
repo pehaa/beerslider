@@ -35,6 +35,8 @@ $initial-reveal: 50%;
   & > :first-child {
     width: 100%*100%/$initial-reveal;
     max-width: none;
+  }
+  & > img:first-child {
     height: auto;
   }
 }

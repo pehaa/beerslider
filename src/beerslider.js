@@ -32,6 +32,9 @@ export class BeerSlider {
     }
     loadingImg (src) {
         return new Promise( (resolve, reject) => {
+            if (!src) {
+                resolve()
+            }
             const img = new Image()
             img.onload = () => resolve()
             img.onerror = () => reject()
@@ -39,8 +42,8 @@ export class BeerSlider {
         })
     }
     loadedBoth () {
-        const mainImageSrc = this.element.children[0].src
-        const revealImageSrc = this.revealElement.src
+        const mainImageSrc = this.element.children[0].src || this.element.children[0].getAttribute(`data-${this.prefix}-src`)
+        const revealImageSrc = this.revealElement.src || this.revealElement.getAttribute(`data-${this.prefix}-src`)
         return Promise.all([this.loadingImg(mainImageSrc), this.loadingImg(revealImageSrc)])
     }
     onImagesLoad () {
