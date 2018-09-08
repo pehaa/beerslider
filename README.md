@@ -8,7 +8,7 @@
 
 
 ### Demo
-You can find [the demo here](https://pepsized.com/wp-content/uploads/2018/09/index.html).
+You can find [the demo here](https://pepsized.com/wp-content/uploads/2018/09/beerslider/demo/index.html).
 
 ## How?
 
@@ -39,16 +39,9 @@ You can also use the cdn solution
 <head>
   ...
   <link rel="stylesheet" href="https://unpkg.com/beerslider/dist/BeerSlider.css">
-  <style>
-    /* override styles here */
-  </style>
 </head>
 <body>
-  <p class="notification" data-close="self">Self-closing notification</p>
-  <p class="notification">
-    This one needs user's action.
-    <button class="delete" type="button">Close</button>
-  </p>
+  
   <!-- Bottom of body -->
   <script src="https://unpkg.com/beerslider/dist/BeerSlider.js"></script>
   <script>
@@ -65,32 +58,22 @@ npm install beerslider
 
 ## Usage:
 
-The recommended markups for a notification are like that:
+The basic markup is:
 
 ```html
-<!-- self closing notification -->
-<p class="notification" data-close="self">Self-closing notification</p>
-<!-- or -->
-<div class="notification" data-close="self">Self-closing notification</div>
-<!-- notification with close button -->
-<p class="notification">
-  This one needs user's action.
-  <button class="delete" type="button" >Close</button>
-</p>
-<!-- or -->
-<div class="notification">
-  This one needs user's action.
-  <button class="delete"  type="button" aria-label="Close">Close</button>
+<div id="slider" class="beer-slider" data-beer-label="before">
+  <img src="../demo-assets/images/dogs-before.jpg" alt="">
+  <div class="beer-reveal" data-beer-label="after">
+    <img src="../demo-assets/images/dogs-after.jpg" alt="">
+  </div>
 </div>
 ```
-You have to use the ```notification``` class since it's used in the .css file.
-You need to add the ```data-close="self"``` attribute to your notification if you want it to close automatically.
+The data-beer-labels are optional, you can leave them empty or do not add them at all.
 
 To activate the slider add the following:
 ```js
 new BeerSlider(document.getElementById('slider'));
 ```
-You can check it on Codepen [here.](https://codepen.io/pehaa/pen/zzzzxxxxxxF)
 
 ### Customization
 
@@ -98,11 +81,53 @@ You can initiate BeerSlider with some options, the available options are:
 ```js
 {
   // start value
-  startValue: '50',
+  start: '50',
   // prefix 
   prefix: 'beer'
 }
 ```
-#### Example:
+### Use with jQuery or Zepto
 
-A Codepen demo is available [here.](https://codepen.io/pehaa/pen/xxxxxxxx)
+If you use jQuery or Zepto in your project and have a few before-after sliders on your page, you can do something like that:
+```html
+<script>
+  $.fn.BeerSlider = function ( options ) {
+    options = options || {};
+    return this.each(function() {
+      new BeerSlider(this, options);
+    });
+  };
+  $('.beer-slider').BeerSlider({start: 25});
+</script>
+```
+or:
+```html
+<script>
+  $.fn.BeerSlider = function ( options ) {
+    options = options || {};
+    return this.each(function() {
+      new BeerSlider(this, options);
+    });
+  };
+  $('.beer-slider').each( (function( index, el ) {
+    $(el).BeerSlider({start: $(el).data('beer-start')})
+  });
+</script>
+```
+with:
+```html
+<div id="beer-slider" class="beer-slider" data-beer-label="before" data-beer-start="25">
+  <img src="man-hold-beer.jpg" alt="Original - Man holding beer">
+  <div class="beer-reveal" data-beer-label="after">
+    <img src="man-hold-beer-after.jpg" alt="Processed - Man holding beer">
+  </div>
+</div>
+<div id="beer-slider2" class="beer-slider" data-beer-label="before" data-beer-start="75">
+  <img src="man-hold-beer.jpg" alt="Original - Man holding beer">
+  <div class="beer-reveal" data-beer-label="after">
+    <img src="man-hold-beer-after.jpg" alt="Processed - Man holding beer">
+  </div>
+</div>
+``` 
+A Codepen demo using jQuery is available [here,](https://codepen.io/pehaa/pen/PdJqPE)
+ans Zepto [here.](https://codepen.io/pehaa/pen/EebMgg)
