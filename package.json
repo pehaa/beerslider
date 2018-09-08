@@ -1,6 +1,6 @@
 {
   "name": "beerslider",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A small,accessible, vanilla JS before-after slider.",
   "main": "./dist/BeerSlider.js",
   "scripts": {
