@@ -16,7 +16,9 @@ $initial-reveal: 50%;
   img {
     vertical-align: bottom;
   }
-
+  & > * {
+    height: 100%;
+  }
   & > img {
     max-width: 100%;
     height: auto;
@@ -26,7 +28,6 @@ $initial-reveal: 50%;
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
   right: 100% - $initial-reveal;
   overflow: hidden;
   z-index: 1;
@@ -35,6 +36,7 @@ $initial-reveal: 50%;
   & > :first-child {
     width: 100%*100%/$initial-reveal;
     max-width: none;
+    height: 100%;
   }
   & > img:first-child {
     height: auto;
