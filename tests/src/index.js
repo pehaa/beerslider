@@ -114,6 +114,10 @@ describe( 'The Beerslider constructor on an existing element', () => {
         expect(beerslider.range.min).toEqual('0')
         expect(beerslider.range.max).toEqual('100')
         expect(beerslider.range.value).toEqual('50')
+        expect(beerslider.range.getAttribute('aria-valuemin')).toEqual('0')
+        expect(beerslider.range.getAttribute('aria-valuemax')).toEqual('100')
+        expect(beerslider.range.getAttribute('aria-valuenow')).toEqual('50')
+
         expect(beerslider.range.getAttribute('class')).toContain('beer-range')
     })
     it('have proper markup for range slider if called with options', () => {
@@ -124,6 +128,9 @@ describe( 'The Beerslider constructor on an existing element', () => {
         expect(beerslider.range.min).toEqual('0')
         expect(beerslider.range.max).toEqual('100')
         expect(beerslider.range.value).toEqual('42')
+        expect(beerslider.range.getAttribute('aria-valuemin')).toEqual('0')
+        expect(beerslider.range.getAttribute('aria-valuemax')).toEqual('100')
+        expect(beerslider.range.getAttribute('aria-valuenow')).toEqual('42')
         expect(beerslider.range.getAttribute('class')).toContain('ba-range')
     })
     it('have proper markup for handle', () => {
@@ -139,7 +146,6 @@ describe( 'The Beerslider constructor on an existing element', () => {
     })
     it('should call the init method when images loaded', (done) => {
         spyOn(BeerSlider.prototype,'init')
-        //spyOn(BeerSlider.prototype,'loadedBoth').and.returnValue(Promise.resolve())
         const el = document.getElementById('slider1')
         const beerslider = new BeerSlider(el)
         beerslider.loadedBoth().then(() => {
@@ -252,6 +258,11 @@ describe('The move method', () => {
         beerslider.range.value = 17
         beerslider.move()
         expect(beerslider.handle.getAttribute('style')).toContain('left: 17%')
+    })
+    it('should modify the aria-valuenow attribure', () => {
+        beerslider.range.value = 17
+        beerslider.move()
+        expect(beerslider.range.getAttribute('aria-valuenow')).toEqual('17')
     })
 })
 describe('The setImgWidth method', () => {
