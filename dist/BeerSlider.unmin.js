@@ -2422,6 +2422,10 @@ var BeerSlider = exports.BeerSlider = function () {
         this.range = this.addElement('input', {
             type: 'range',
             class: this.prefix + '-range',
+            'aria-label': 'Percent of revealed content',
+            'aria-valuemin': '0',
+            'aria-valuemax': '100',
+            'aria-valuenow': this.start,
             value: this.start,
             min: '0',
             max: '100'
@@ -2513,6 +2517,7 @@ var BeerSlider = exports.BeerSlider = function () {
         value: function move() {
             this.revealContainer.style.width = this.range.value + '%';
             this.handle.style.left = this.range.value + '%';
+            this.range.setAttribute('aria-valuenow', this.range.value);
         }
     }]);
 
