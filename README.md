@@ -130,4 +130,4 @@ with:
 </div>
 ``` 
 A Codepen demo using jQuery is available [here,](https://codepen.io/pehaa/pen/PdJqPE)
-ans Zepto [here.](https://codepen.io/pehaa/pen/EebMgg)
+and Zepto [here.](https://codepen.io/pehaa/pen/EebMgg)
