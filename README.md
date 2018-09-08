@@ -20,9 +20,6 @@ The ```dist``` folder contains the ready for production minified files: ```BeerS
 <head>
   ...
   <link rel="stylesheet" href="dist/BeerSlider.css">
-  <style>
-    /* override styles here */
-  </style>
 </head>
 <body>
   
