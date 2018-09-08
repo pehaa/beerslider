@@ -8,6 +8,8 @@
     box-sizing: border-box; }
   .beer-slider img {
     vertical-align: bottom; }
+  .beer-slider > * {
+    height: 100%; }
   .beer-slider > img {
     max-width: 100%;
     height: auto; }
@@ -16,7 +18,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
   right: 50%;
   overflow: hidden;
   z-index: 1;
@@ -24,7 +25,8 @@
   transition: opacity 0.35s; }
   .beer-reveal > :first-child {
     width: 200%;
-    max-width: none; }
+    max-width: none;
+    height: 100%; }
   .beer-reveal > img:first-child {
     height: auto; }
 
