@@ -13,7 +13,7 @@ $initial-reveal: 50%;
   position: relative;
   overflow: hidden;
 
-  img {
+  img, svg {
     vertical-align: bottom;
   }
   & > * {

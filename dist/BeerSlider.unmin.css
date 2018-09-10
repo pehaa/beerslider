@@ -6,7 +6,7 @@
   .beer-slider *:before,
   .beer-slider *:after {
     box-sizing: border-box; }
-  .beer-slider img {
+  .beer-slider img, .beer-slider svg {
     vertical-align: bottom; }
   .beer-slider > * {
     height: 100%; }
