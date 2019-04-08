@@ -130,6 +130,7 @@ $initial-reveal: 50%;
 }
 .#{$prefix}-reveal[data-beer-label]:after {
   left: 1.5rem;
+  white-space: nowrap;
 }
 .#{$prefix}-slider[data-beer-label=""]:after,
 .#{$prefix}-reveal[data-beer-label=""]:after {
