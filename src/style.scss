@@ -59,7 +59,7 @@ $initial-reveal: 50%;
   -ms-touch-action: auto;
   touch-action: auto;
 
-  &::-webkit-slider-thumb {
+  &::slider-thumb {
     -webkit-appearance:none;
     height: 300vh;
   }
