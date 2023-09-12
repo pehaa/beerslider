@@ -45,7 +45,7 @@
   opacity: 0;
   -ms-touch-action: auto;
   touch-action: auto; }
-  .beer-range::-webkit-slider-thumb {
+  .beer-range::slider-thumb {
     -webkit-appearance: none;
     height: 300vh; }
   .beer-range::-moz-range-thumb {
